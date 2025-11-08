@@ -1,11 +1,13 @@
+import os
 import json
 import requests
 import websocket
+import threading
 
-BOT_TOKEN = "8400365755:AAHhn0MzfSWfzoNIIOY2sK-teij0Ro9Ya7M"
-CHAT_ID = "391383330"
+BOT_TOKEN = os.getenv("BOT_TOKEN")      # НЕ хардкодити токени
+CHAT_ID = os.getenv("CHAT_ID")
+THRESHOLD = float(os.getenv("THRESHOLD", "100"))
 
-THRESHOLD = 100  # зміна в доларах
 
 def send_telegram(msg):
     """Відправляє повідомлення в Telegram"""
